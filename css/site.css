@@ -1,15 +1,14 @@
 ﻿body
 {
-    font-family: "Yu Gothic"; /* 環境に合わせてお好みのフォントを使用してください */
+    font-family: "Yu Gothic"; 
 }
 
-/* URL TextBox のサイズ指定 */
+
 .urlinput
 {
     width: 600px;
 }
 
-/* 分析結果の表示テーブルのフォーマット指定 */
 td.OutputTh
 {
     text-align: left;
@@ -17,12 +16,11 @@ td.OutputTh
     width: 300px;
 }
 
-/* 画像の表示フォーマット指定 */
 #PhotoDiv{
   position: relative;
 }
 
-/* 顔認識 (正方形) のフォーマット指定 */
+
 #Rectangle
 {
     opacity: 0.5;
