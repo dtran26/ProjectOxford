@@ -4,26 +4,30 @@ $(function () {
     $('#redo').hide();
     $('#redoredo').hide();
 
+
     Webcam.set({
         flip_horiz: true,
     });
 
     Webcam.attach( '#my_camera' );
+    // $('#cameraButton').glow('#ffffff');
 
     
 
     function take_snapshot() {
         Webcam.snap( function(data_uri) {
             document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
-            $('#my_camera').hide()
-            $('#my_result').show()
+            $('#my_camera').hide();
+            $('#my_result').show();
             $('#ok').text("Ok");
             $('#redo').text("Re-take");
             $('#ok').show();
             $('#redo').show();
             getFaceInfo(dataURItoBlob(data_uri));
             $('table').hide();
-        } );
+            $('#cameraButton').hide();
+            $('.result_div').hide();
+        });
 
     }
 
@@ -31,12 +35,13 @@ $(function () {
     
     
     $('#ok').on('click',function(){
-        $(this).hide()
-        $('#redo').hide()
-        $('#cameraButton').hide()
+        $(this).hide();
+        $('#redo').hide();
+        $('#cameraButton').hide();
         $('table').show();
         $('#redoredo').text('Re-take')
         $('#redoredo').show();
+        $('.result_div').show();
 
     });
 
@@ -46,6 +51,8 @@ $(function () {
         $('#ok').hide();
         $(this).hide();
         $('table').hide();
+        $('#cameraButton').show();
+        $('.result_div').hide();
     });
 
     $('#redoredo').on('click',function(){
@@ -54,6 +61,7 @@ $(function () {
         $('table').hide();
         $("#cameraButton").show();
         $(this).hide();
+        $('.result_div').hide();
     })
 
     function dataURItoBlob(dataURI) {
@@ -88,10 +96,10 @@ $(function () {
         var webSvcUrl = "https://api.projectoxford.ai/emotion/v1.0/recognize";
 
 
-        var outputDiv = $("#OutputDiv");
+        var resultDiv = $(".result_div");
 
 
-        outputDiv.text("Analyzing...");
+        resultDiv.text("Analyzing...");
         
     
         $.ajax({
@@ -127,31 +135,59 @@ $(function () {
                 var faceSadness = floatFormat(faceScore.sadness);
                 var faceSurprise = floatFormat(faceScore.surprise);                
 
+
+                var outputs = {"Anger":faceAnger,"Contempt":faceContempt,
+                               "Disgust":faceDisgust,"Fear":faceFear,
+                               "Happiness":faceHappiness,"Neutral":faceNeutral,
+                               "Sadness":faceSadness,"Surprise":faceSurprise}
+                console.log(outputs)
+                var newOutputs = []
+                for(var prop in outputs) {
+                    newOutputs.push(outputs[prop])
+                }
+
+                console.log(newOutputs)
+
+                var maxOutput = Math.max.apply(Math,newOutputs)
+
+
                 var outputText = "";
-                outputText += "<h3>" + "Result:" + "</h3>";
-                outputText += "anger: " + faceAnger + "<br>";
-                outputText += "contempt: " + faceContempt + "<br>";
-                outputText += "disgust: " + faceDisgust + "<br>";
-                outputText += "fear: " + faceFear + "<br>";
-                outputText += "happiness: " + faceHappiness + "<br>";
-                outputText += "neutral: " + faceNeutral + "<br>";
-                outputText += "sadness: " + faceSadness + "<br>";
-                outputText += "surprise: " + faceSurprise + "<br>";
+
+                for (var prop in outputs) {
+                    if (outputs[prop] == maxOutput) {
+                        outputText = "<h3>" + prop + "</h3>"
+                    }
+                }
+                console.log(outputText)
+
+                
+
+                // outputText += "<h3>" + String(maxOutput) + "</h3>"
+                // outputText += "<h3>" + "Result:" + "</h3>";
+                // outputText += "anger: " + faceAnger + "<br>";
+                // outputText += "contempt: " + faceContempt + "<br>";
+                // outputText += "disgust: " + faceDisgust + "<br>";
+                // outputText += "fear: " + faceFear + "<br>";
+                // outputText += "happiness: " + faceHappiness + "<br>";
+                // outputText += "neutral: " + faceNeutral + "<br>";
+                // outputText += "sadness: " + faceSadness + "<br>";
+                // outputText += "surprise: " + faceSurprise + "<br>";
 
                 // console.log(outputText)
 
-                outputDiv.html(outputText);
+                resultDiv.html(outputText);
+                // resultDiv.css("position","relative");
 
             }
 
             else {
-                outputDiv.text("Detection Failed");
+                resultDiv.text("Detection Failed");
             }
 
         }).fail(function (err) {
             if(document.getElementById('imageUrlTextbox').value!="")
             {
-                $("#OutputDiv").text("ERROR!" + err.responseText);
+                $("result_div").text("ERROR!" + err.responseText);
             }   
         });
 

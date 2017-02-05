@@ -15,36 +15,45 @@
         <!-- <input type="url" id="imageUrlTextbox" class="urlinput"> -->
     </div>
 
-    <div class='table'>
+    <!-- <div class='table'>
         <table align='right'>
-            <tr>
-                <td class="OutputTh">
-                    <!--Output Result-->
+            <tr> -->
+                <!-- <td class="OutputTh">
+                    
                     <div id="OutputDiv"></div>
-                </td>
-                <td>
+                </td> -->
+                <!-- <td> -->
                     <!--Output Image-->            
-                    <div id="PhotoDiv">
+                    <!-- <div id="PhotoDiv">
                     <img id="ImageToAnalyze">
                     <img src="image/Rectangle.png" id="Rectangle">
                     </div>
                 </td>
             </tr>
-        </table>
+        </table> -->
+    
+
     </div>
     <!--webcamJS-->
     <script src="webcamjs/webcam.js"></script>
 
     <div id="my_camera" style="width:320px; height:240px;"></div>
     <div id="my_result"></div>
-    <button id='ok' type="button"></button>
-    <button id='redo' type="button"></button>
-    <button id='redoredo' type="button"></button>
+    <br><div class="buttons">
+        <button class="buttons" id='ok' type="button"></button>
+        <button class="buttons" id='redo' type="button"></button>
+        <button class="buttons" id='redoredo' type="button"></button>
+    </div>
+
+
 
     <script language="JavaScript">
 
     </script>
+    <br><div class='phototake'>
+        <a id="cameraButton">Take Snapshot</a>
+    </div>
 
-    <a id="cameraButton">Take Snapshot</a>
+    <div class='result_div'></div>
 </body>
 </html>
