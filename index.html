@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Emotion API Sample</title>
+    <title>Emotion API</title>
     <link rel="stylesheet" href="css/site.css">
     <script src="scripts/jquery-3.1.0.min.js"></script>
     <script src="scripts/script.js"></script>
@@ -12,29 +12,34 @@
         <h1>Microsoft Cognitive Services</h1>
         <h2>Emotion API Sample</h2>
         <!--Enter Image URL-->
-        <input type="url" id="imageUrlTextbox" class="urlinput">
+        <!-- <input type="url" id="imageUrlTextbox" class="urlinput"> -->
     </div>
 
-    <table>
-        <tr>
-            <td class="OutputTh">
-                <!--Output Result-->
-                <div id="OutputDiv">Output</div>
-            </td>
-            <td>
-                <!--Output Image-->            
-                <div id="PhotoDiv">
-                <img id="ImageToAnalyze">
-                <img src="image/Rectangle.png" id="Rectangle">
-                </div>
-            </td>
-        </tr>
-    </table>
+    <div class='table'>
+        <table align='right'>
+            <tr>
+                <td class="OutputTh">
+                    <!--Output Result-->
+                    <div id="OutputDiv"></div>
+                </td>
+                <td>
+                    <!--Output Image-->            
+                    <div id="PhotoDiv">
+                    <img id="ImageToAnalyze">
+                    <img src="image/Rectangle.png" id="Rectangle">
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
     <!--webcamJS-->
     <script src="webcamjs/webcam.js"></script>
 
     <div id="my_camera" style="width:320px; height:240px;"></div>
     <div id="my_result"></div>
+    <button id='ok' type="button"></button>
+    <button id='redo' type="button"></button>
+    <button id='redoredo' type="button"></button>
 
     <script language="JavaScript">
 

@@ -9,10 +9,17 @@
     width: 600px;
 }
 
-td.OutputTh
+/*td.OutputTh
 {
     text-align: left;
     vertical-align: top;
+    width: 300px;
+}*/
+
+table
+{
+    text-align: 'right';
+    vertical-align: 'top';
     width: 300px;
 }
 
@@ -28,3 +35,4 @@ td.OutputTh
     position: absolute;
     display: none;
 }
+

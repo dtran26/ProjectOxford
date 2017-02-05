@@ -1,31 +1,60 @@
 $(function () {
 
+    $('#ok').hide();
+    $('#redo').hide();
+    $('#redoredo').hide();
+
     Webcam.set({
         flip_horiz: true,
     });
 
     Webcam.attach( '#my_camera' );
 
+    
+
     function take_snapshot() {
         Webcam.snap( function(data_uri) {
             document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
-            getFaceInfo(dataURItoBlob(data_uri));         
+            $('#my_camera').hide()
+            $('#my_result').show()
+            $('#ok').text("Ok");
+            $('#redo').text("Re-take");
+            $('#ok').show();
+            $('#redo').show();
+            getFaceInfo(dataURItoBlob(data_uri));
+            $('table').hide();
         } );
-
- 
-      showImage(); 
 
     }
 
-    $("#cameraButton").click(take_snapshot);
-
-    var showImage = function () {
-        var imageUrl = $("#imageUrlTextbox").val();
-        if (imageUrl) {
-            $("#ImageToAnalyze").attr("src", imageUrl);
-        }
-    };
+    $("#cameraButton").click(take_snapshot)
     
+    
+    $('#ok').on('click',function(){
+        $(this).hide()
+        $('#redo').hide()
+        $('#cameraButton').hide()
+        $('table').show();
+        $('#redoredo').text('Re-take')
+        $('#redoredo').show();
+
+    });
+
+    $('#redo').on('click',function(){
+        $('#my_result').hide();
+        $('#my_camera').show();
+        $('#ok').hide();
+        $(this).hide();
+        $('table').hide();
+    });
+
+    $('#redoredo').on('click',function(){
+        $('#my_camera').show();
+        $('#my_result').hide();
+        $('table').hide();
+        $("#cameraButton").show();
+        $(this).hide();
+    })
 
     function dataURItoBlob(dataURI) {
     // convert base64/URLEncoded data component to raw binary data held in a string
@@ -109,6 +138,8 @@ $(function () {
                 outputText += "sadness: " + faceSadness + "<br>";
                 outputText += "surprise: " + faceSurprise + "<br>";
 
+                // console.log(outputText)
+
                 outputDiv.html(outputText);
 
             }
@@ -132,7 +163,7 @@ $(function () {
 
     $("#imageUrlTextbox").change(function () {
         hideMarkers();
-        showImage();
+        // showImage();
         getFaceInfo();
     });
 
