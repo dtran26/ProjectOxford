@@ -45,9 +45,11 @@ h1,h2
 
 #my_result
 {
-    display: block;
-    margin: auto;
-    width: 22.5%;   
+    position: relative;
+    text-align: center;
+    margin:auto;
+    display:block;
+
 }
 
 #my_camera
@@ -79,7 +81,7 @@ h1,h2
 {
     position:relative;
     text-align: center;
-    /*background-color: #4CAF50;*/
+    /*background-color: #4CAF50;
     /*border: none;*/
     color: green;
     /*padding: 15px 32px;*/
@@ -99,17 +101,26 @@ h1,h2
 }
 
 
+.result_div
+{
+    position: relative;
+    text-align: center;
+    margin:auto;
+    display:block;
+}
 
-table
+
+/*table
 {
     text-align: 'right';
     vertical-align: 'top';
     width: 300px;
-}
+}*/
 
 
 #PhotoDiv{
   position: relative;
+  height: 50px;
 }
 
 
