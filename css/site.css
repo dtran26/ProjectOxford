@@ -1,18 +1,20 @@
 ﻿html
 {
-    background-image: url("http://www.cuiket.com.br//images/photo4.jpg");
+    /*background-image: url("http://www.cuiket.com.br//images/photo4.jpg");*/
+    background-color: #3B3738;
 }
 
 body
 {
-    font-family: "Yu Gothic"; 
+    font-family: 'Titillium Web', sans-serif;
+
 }
 
-h1,h2
+h1,h2,h3
 {
     /*text-decoration-color: #ffffff;*/
-    color: #ffffff;
-    text-shadow: 0 1px 0 #bbb,
+    color: #FDF5EC;
+/*    text-shadow: 0 1px 0 #bbb,
     0 2px 0 #bbb,
     0 3px 0 #aaa,
     0 4px 0 #aaa,
@@ -22,7 +24,7 @@ h1,h2
     0 1px 3px #000,
     0 3px 5px #000,
     0 5px 10px #000,
-    0 5px 20px #000;
+    0 5px 20px #000;*/
     text-align: center;
 }
 
@@ -52,6 +54,15 @@ h1,h2
 
 }
 
+/*#my_result #rectangle{
+    position: absolute;
+    left: 300px;
+    right:300px;
+    opacity: 0.5;
+    z-index: -999;
+    display: none;
+}
+*/
 #my_camera
 {
     position: relative;
@@ -62,7 +73,7 @@ h1,h2
 .phototake
 {
     color: #ffffff;
-    text-shadow: 0 1px 0 #bbb,
+/*    text-shadow: 0 1px 0 #bbb,
     0 2px 0 #bbb,
     0 3px 0 #aaa,
     0 4px 0 #aaa,
@@ -72,7 +83,7 @@ h1,h2
     0 1px 3px #000,
     0 3px 5px #000,
     0 5px 10px #000,
-    0 5px 20px #000;
+    0 5px 20px #000;*/
     position: relative;
     text-align: center;
 }
@@ -83,10 +94,11 @@ h1,h2
     text-align: center;
     /*background-color: #4CAF50;
     /*border: none;*/
-    color: green;
+    color: #3B3738;
     /*padding: 15px 32px;*/
     /*text-align: center;*/
-    text-decoration: none;
+    /*text-decoration: none;*/
+    font-family: 'Titillium Web', sans-serif;
     /*display: inline-block;*/
     font-size: 16px;
     /*margin: 4px 2px;*/
@@ -124,11 +136,4 @@ h1,h2
 }
 
 
-#Rectangle
-{
-    opacity: 0.5;
-    z-index: 10;
-    position: absolute;
-    display: none;
-}
 
