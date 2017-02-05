@@ -4,7 +4,7 @@ $(function () {
 
     function take_snapshot() {
         Webcam.snap( function(data_uri) {
-            console.log('123');
+            document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
             getFaceInfo(dataURItoBlob(data_uri));         
         } );
 
@@ -22,6 +22,7 @@ $(function () {
         }
     };
     
+
     function dataURItoBlob(dataURI) {
     // convert base64/URLEncoded data component to raw binary data held in a string
     var byteString;
@@ -42,6 +43,7 @@ $(function () {
     return new Blob([ia], {type:mimeString});
     }
   
+
     var getFaceInfo = function (photo) {
 
         var subscriptionKey = "4f0308887d724b2393c2c49e8ef6a590";
@@ -55,15 +57,9 @@ $(function () {
 
         var outputDiv = $("#OutputDiv");
 
-        if(document.getElementById('imageUrlTextbox').value=="")
-        {
 
-            outputDiv.text("Please enter the URL of the image");
-        }
-        else{
-
-            outputDiv.text("Analyzing...");
-        }
+        outputDiv.text("Analyzing...");
+        
     
         $.ajax({
             type: "POST",
@@ -71,7 +67,6 @@ $(function () {
             processData: false,
             headers: { "Ocp-Apim-Subscription-Key": subscriptionKey },
             contentType: "application/octet-stream",
-            // data: '{ "Url": "' + imageUrl + '" }'
             data: photo
         }).done(function (data) {
 
