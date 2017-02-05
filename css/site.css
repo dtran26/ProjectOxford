@@ -1,78 +1,50 @@
-﻿html
-{
+﻿html {
     background-color: #3B3738;
 }
-
-body
-{
+body {
     font-family: 'Titillium Web', sans-serif;
-
 }
-
-h1,h2,h3
-{
+h1, h2, h3 {
     color: #FDF5EC;
     text-align: center;
 }
-
-#my_result
-{
+#my_result {
     position: relative;
     text-align: center;
-    margin:auto;
-    display:block;
-
+    margin: auto;
+    display: block;
 }
-
-
-#my_camera
-{
+#my_camera {
     position: relative;
-    margin:auto;
-    display:block;
+    margin: auto;
+    display: block;
 }
-
-.phototake
-{
+.phototake {
     color: #ffffff;
     position: relative;
     text-align: center;
 }
-
-.buttons
-{
-    position:relative;
+.buttons {
+    position: relative;
     text-align: center;
     color: #3B3738;
     font-family: 'Titillium Web', sans-serif;
     font-size: 16px;
     cursor: pointer;
 }
-
-
-
-.urlinput
-{
+.urlinput {
     width: 600px;
 }
-
-
-.result_div
-{
+.result_div {
     position: relative;
     text-align: center;
-    margin:auto;
-    display:block;
+    margin: auto;
+    display: block;
 }
-
-
-#PhotoDiv{
-  position: relative;
-  height: 50px;
+#PhotoDiv {
+    position: relative;
+    height: 50px;
 }
-
-.article{
+.article {
     display: none;
 }
-
-
