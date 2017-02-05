@@ -156,7 +156,9 @@ $(function () {
                         outputText = "<h3>" + "We've detected " + "<i>" + "a resting bitch face" + "</i>" + "</h3><h4><i>(hint: smile)</i></h4>"
                     }
                     else{
-                        outputText = "<h3>" + "We couldn't detect " + "<i>" + "a resting bitch face" + "</i>" + "</h3>"
+                        for (var prop in outputs) {
+                       if (outputs[prop] == maxOutput) {
+                            outputText = "<h3>" + "We've detected " + "<i>" + prop + "</i>" + "</h3>"
                     }
                 }
 
