@@ -1,7 +1,7 @@
 $(function () {
 
     Webcam.set({
-        flip_horiz: true,
+        flip_horiz: false,
     });
 
     Webcam.attach( '#my_camera' );
