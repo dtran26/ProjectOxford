@@ -99,6 +99,9 @@ $(function () {
         var resultDiv = $(".result_div");
 
 
+        var articleDiv = $(".article");
+
+
         resultDiv.text("Analyzing...");
         
     
@@ -138,7 +141,7 @@ $(function () {
 
                 var outputs = {"anger":faceAnger,"contempt":faceContempt,
                                "disgust":faceDisgust,"fear":faceFear,
-                               "happiness":faceHappiness,"a resting bitch face":faceNeutral,
+                               "happiness":faceHappiness,"neutral":faceNeutral,
                                "sadness":faceSadness,"surprise":faceSurprise}
                 console.log(outputs)
                 var newOutputs = []
@@ -153,11 +156,38 @@ $(function () {
 
                 var outputText = "";
 
-                for (var prop in outputs) {
-                    if (outputs[prop] == maxOutput) {
-                        outputText = "<h3>" + "We've detected " + "<i>" + prop + "</i>" + "</h3>"
+                // for (var prop in outputs) {
+                //     if (outputs[prop] == maxOutput) {
+                //         if maxOutput > 0.6{
+                //         outputText = "<h3>" + "We've detected " + "<i>" + prop + "</i>" + "</h3>"
+                //         }
+                //     }
+                // }
+
+                if (maxOutput == faceNeutral){
+                    if(faceNeutral > 0.85 && faceHappiness < 0.25){
+                        outputText = "<h3>" + "We've detected " + "<i>" + "a resting bitch face" + "</i>" + "</h3><h4><i>(hint: smile)</i></h4>"
+                        $("article").css("display", "block");
+                    }
+                    else if(faceNeutral > 0.6 && faceSadness > 0.15){
+                        outputText = "<h3>" + "We've detected " + "<i>" + "a resting bitch face" + "</i>" + "</h3><h4><i>(hint: smile)</i></h4>"
+                        $("article").css("display", "block");
+                    }
+                    else{
+                        outputText = "<h3>" + "We couldn't detect " + "<i>" + "a resting bitch face" + "</i>" + "</h3>"
                     }
                 }
+
+                else{
+
+                    for (var prop in outputs) {
+                       if (outputs[prop] == maxOutput) {
+                            outputText = "<h3>" + "We've detected " + "<i>" + prop + "</i>" + "</h3>"
+                         }
+                     }
+                 }
+                
+
                 console.log(outputText)
 
                 
@@ -181,7 +211,6 @@ $(function () {
                 // outputDiv.html(outputText);
 
             }
-
             else {
                 resultDiv.text("Detection Failed");
             }

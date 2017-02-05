@@ -135,5 +135,9 @@ h1,h2,h3
   height: 50px;
 }
 
+.article{
+    display: none;
+}
+
 
 
