@@ -1,11 +1,24 @@
 $(function () {
 
+    Webcam.attach( '#my_camera' );
+
+    function take_snapshot() {
+        Webcam.snap( function(data_uri) {
+                
+           
+        } );
+
+        showImage(); 
+        getFaceInfo();  
+    }
+
     var showImage = function () {
         var imageUrl = $("#imageUrlTextbox").val();
         if (imageUrl) {
             $("#ImageToAnalyze").attr("src", imageUrl);
         }
     };
+  
   
     var getFaceInfo = function () {
 
@@ -107,7 +120,6 @@ $(function () {
         getFaceInfo();
     });
 
-    showImage(); 
-    getFaceInfo();  
+
 
 });
