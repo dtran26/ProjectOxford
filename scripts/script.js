@@ -11,7 +11,6 @@ $(function () {
     });
 
     Webcam.attach( '#my_camera' );
-    // $('#cameraButton').glow('#ffffff');
 
     function take_snapshot() {
         Webcam.snap( function(data_uri) {
@@ -93,7 +92,7 @@ $(function () {
         var imageUrl = photo;
 
 
-        var webSvcUrl = "https://api.projectoxford.ai/emotion/v1.0/recognize";
+        var APIUrl = "https://api.projectoxford.ai/emotion/v1.0/recognize";
 
 
         var resultDiv = $(".result_div");
@@ -107,7 +106,7 @@ $(function () {
     
         $.ajax({
             type: "POST",
-            url: webSvcUrl,
+            url: APIUrl,
             processData: false,
             headers: { "Ocp-Apim-Subscription-Key": subscriptionKey },
             contentType: "application/octet-stream",
@@ -116,12 +115,6 @@ $(function () {
 
 
             if (data.length > 0) {
-
-                // var faceRectange = data[0].faceRectangle;
-                // var faceWidth = faceRectange.width;
-                // var faceHeight = faceRectange.height;
-                // var faceLeft = faceRectange.left;
-                // var faceTop = faceRectange.top;
 
 
                 function floatFormat( number ) {
@@ -153,25 +146,14 @@ $(function () {
 
                 var maxOutput = Math.max.apply(Math,newOutputs)
 
-
                 var outputText = "";
-
-                // for (var prop in outputs) {
-                //     if (outputs[prop] == maxOutput) {
-                //         if maxOutput > 0.6{
-                //         outputText = "<h3>" + "We've detected " + "<i>" + prop + "</i>" + "</h3>"
-                //         }
-                //     }
-                // }
 
                 if (maxOutput == faceNeutral){
                     if(faceNeutral > 0.85 && faceHappiness < 0.25){
                         outputText = "<h3>" + "We've detected " + "<i>" + "a resting bitch face" + "</i>" + "</h3><h4><i>(hint: smile)</i></h4>"
-                        $("article").css("display", "block");
                     }
                     else if(faceNeutral > 0.6 && faceSadness > 0.15){
                         outputText = "<h3>" + "We've detected " + "<i>" + "a resting bitch face" + "</i>" + "</h3><h4><i>(hint: smile)</i></h4>"
-                        $("article").css("display", "block");
                     }
                     else{
                         outputText = "<h3>" + "We couldn't detect " + "<i>" + "a resting bitch face" + "</i>" + "</h3>"
@@ -190,37 +172,15 @@ $(function () {
 
                 console.log(outputText)
 
-                
-
-                // outputText += "<h3>" + String(maxOutput) + "</h3>"
-                // outputText += "<h3>" + "Result:" + "</h3>";
-                // outputText += "anger: " + faceAnger + "<br>";
-                // outputText += "contempt: " + faceContempt + "<br>";
-                // outputText += "disgust: " + faceDisgust + "<br>";
-                // outputText += "fear: " + faceFear + "<br>";
-                // outputText += "happiness: " + faceHappiness + "<br>";
-                // outputText += "neutral: " + faceNeutral + "<br>";
-                // outputText += "sadness: " + faceSadness + "<br>";
-                // outputText += "surprise: " + faceSurprise + "<br>";
-
-
-                // console.log(outputText)
 
                 resultDiv.html(outputText);
-                // resultDiv.css("position","relative");
-                // outputDiv.html(outputText);
 
             }
             else {
                 resultDiv.text("Detection Failed");
             }
 
-        }).fail(function (err) {
-            if(document.getElementById('imageUrlTextbox').value!="")
-            {
-                $("result_div").text("ERROR!" + err.responseText);
-            }   
-        });
+        })
 
     };
 
