@@ -4,26 +4,29 @@ $(function () {
     $('#redo').hide();
     $('#redoredo').hide();
 
+
     Webcam.set({
         flip_horiz: true,
     });
 
     Webcam.attach( '#my_camera' );
+    // $('#cameraButton').glow('#ffffff');
 
     
 
     function take_snapshot() {
         Webcam.snap( function(data_uri) {
             document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
-            $('#my_camera').hide()
-            $('#my_result').show()
+            $('#my_camera').hide();
+            $('#my_result').show();
             $('#ok').text("Ok");
             $('#redo').text("Re-take");
             $('#ok').show();
             $('#redo').show();
             getFaceInfo(dataURItoBlob(data_uri));
             $('table').hide();
-        } );
+            $('#cameraButton').hide();
+        });
 
     }
 
@@ -46,6 +49,7 @@ $(function () {
         $('#ok').hide();
         $(this).hide();
         $('table').hide();
+        $('#cameraButton').show();
     });
 
     $('#redoredo').on('click',function(){
