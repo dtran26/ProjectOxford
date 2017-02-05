@@ -1,5 +1,5 @@
-## Do You Have a Bitch Face?
-
+# Do You Have a Bitch Face?
+DYHBF is a simple web app made during hack@brown 2017. I, along with my teammate, Sean Kim, built a simple emotion recognition app using Microsoft Emotion API with jQuery, WebcamJS library, CSS, and HTML . 
 
 ## Browser Support
 
