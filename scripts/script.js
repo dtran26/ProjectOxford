@@ -80,12 +80,6 @@ $(function () {
                 var faceTop = faceRectange.top;
 
 
-                $("#Rectangle").css("top", faceTop);
-                $("#Rectangle").css("left", faceLeft);
-                $("#Rectangle").css("height", faceHeight);
-                $("#Rectangle").css("width", faceHeight);
-                $("#Rectangle").css("display", "block");
-
                 function floatFormat( number ) {
                     return Math.round( number * Math.pow( 10 , 6 ) ) / Math.pow( 10 , 6 ) ;
                 }
