@@ -4,13 +4,16 @@ $(function () {
 
     function take_snapshot() {
         Webcam.snap( function(data_uri) {
-                
-           
+            console.log('123');
+            getFaceInfo(dataURItoBlob(data_uri));         
         } );
 
-        showImage(); 
-        getFaceInfo();  
+ 
+      showImage(); 
+
     }
+
+    $("#cameraButton").click(take_snapshot);
 
     var showImage = function () {
         var imageUrl = $("#imageUrlTextbox").val();
@@ -18,14 +21,33 @@ $(function () {
             $("#ImageToAnalyze").attr("src", imageUrl);
         }
     };
+    
+    function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+
+    return new Blob([ia], {type:mimeString});
+    }
   
-  
-    var getFaceInfo = function () {
+    var getFaceInfo = function (photo) {
 
         var subscriptionKey = "4f0308887d724b2393c2c49e8ef6a590";
 
 
-        var imageUrl = $("#imageUrlTextbox").val();
+        var imageUrl = photo;
 
 
         var webSvcUrl = "https://api.projectoxford.ai/emotion/v1.0/recognize";
@@ -43,13 +65,14 @@ $(function () {
             outputDiv.text("Analyzing...");
         }
     
-
         $.ajax({
             type: "POST",
             url: webSvcUrl,
+            processData: false,
             headers: { "Ocp-Apim-Subscription-Key": subscriptionKey },
-            contentType: "application/json",
-            data: '{ "Url": "' + imageUrl + '" }'
+            contentType: "application/octet-stream",
+            // data: '{ "Url": "' + imageUrl + '" }'
+            data: photo
         }).done(function (data) {
 
 
