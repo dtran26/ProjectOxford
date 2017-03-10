@@ -108,7 +108,7 @@ $(function() {
                     "sadness": faceSadness,
                     "surprise": faceSurprise
                 };
-                console.log(outputs);
+                // console.log(outputs);
                 var newOutputs = [];
                 for (var prop in outputs) {
                     newOutputs.push(outputs[prop])
@@ -116,19 +116,19 @@ $(function() {
                 console.log(newOutputs);
                 var maxOutput = Math.max.apply(Math, newOutputs);
                 var outputText = "";
-                if (maxOutput == faceNeutral) {
-                    if (faceNeutral > 0.85 && faceHappiness < 0.25) {
-                        outputText = "<h3>" + "We've detected " + "<i>" + "a resting bitch face" + "</i>" + "</h3><h4><i>(hint: smile)</i></h4>";
-                    } else if (faceNeutral > 0.6 && faceSadness > 0.15) {
-                        outputText = "<h3>" + "We've detected " + "<i>" + "a resting bitch face" + "</i>" + "</h3><h4><i>(hint: smile)</i></h4>";
-                    }
-                } else {
-                    for (var prop in outputs) {
+                // if (maxOutput == faceNeutral) {
+                //     if (faceNeutral > 0.85 && faceHappiness < 0.25) {
+                //         outputText = "<h3>" + "We've detected " + "<i>" + "a resting bitch face" + "</i>" + "</h3><h4><i>(hint: smile)</i></h4>";
+                //     } else if (faceNeutral > 0.6 && faceSadness > 0.15) {
+                //         outputText = "<h3>" + "We've detected " + "<i>" + "a resting bitch face" + "</i>" + "</h3><h4><i>(hint: smile)</i></h4>";
+                //     }
+                // } else {
+                //     for (var prop in outputs) {
                         if (outputs[prop] == maxOutput) {
                             outputText = "<h3>" + "We've detected " + "<i>" + prop + "</i>" + "</h3>"
                         }
-                    }
-                }
+                    // }
+                // }
                 console.log(outputText);
                 resultDiv.html(outputText);
             } else {
