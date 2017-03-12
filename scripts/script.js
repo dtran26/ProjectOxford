@@ -127,7 +127,7 @@ $(function() {
                         if (outputs[prop] == maxOutput) {
                             outputText = "<h3>" + "We've detected " + "<i>" + prop + "</i>" + "</h3>"
                         }
-                    // }
+                    }
                 // }
                 console.log(outputText);
                 resultDiv.html(outputText);
