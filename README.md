@@ -1,7 +1,5 @@
-# Do You Have a Resting Bitch Face?
-DYHBF is a simple web app made during hack@brown 2017. I, along with my teammate, Sean Kim, built a simple emotion recognition app using Microsoft Emotion API with jQuery, WebcamJS library, CSS, and HTML . 
-
-Read more at about RBF at: https://en.wikipedia.org/wiki/Resting_bitch_face
+# Webcam Emotion Detector
+Just a simple web app made during hack@brown 2017. I, along with my teammate, Sean Kim, built a simple emotion recognition app using Microsoft Emotion API with jQuery, WebcamJS library, CSS, and HTML . 
 
 ## Browser Support
 
